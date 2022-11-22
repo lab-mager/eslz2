@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "AzOps"
+    }
+  },
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "Deploy-Resource-Diag",
+      "apiVersion": "2022-06-01",
+      "location": "centralus",
+      "identity": {
+        "PrincipalId": "a62a4d8f-1941-4a58-b03f-f72754a39335",
+        "TenantId": "b4d92c44-4053-444e-9eda-f79a78ea305c",
+        "Type": "SystemAssigned"
+      },
+      "properties": {
+        "Description": "Ensures that Azure resources are configured to forward diagnostic logs and metrics to an Azure Log Analytics workspace.",
+        "DisplayName": "Deploy-Resource-Diag",
+        "EnforcementMode": "Default",
+        "NonComplianceMessages": [],
+        "NotScopes": [],
+        "Parameters": {
+          "logAnalytics": {
+            "value": "/subscriptions/45745095-da5c-4dae-969e-dcd1aa0a41ab/resourceGroups/eslz-mgmt/providers/Microsoft.OperationalInsights/workspaces/eslz-law"
+          }
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/eslz/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diagnostics-LogAnalytics",
+        "Scope": "/providers/Microsoft.Management/managementGroups/eslz"
+      }
+    }
+  ],
+  "outputs": {}
+}

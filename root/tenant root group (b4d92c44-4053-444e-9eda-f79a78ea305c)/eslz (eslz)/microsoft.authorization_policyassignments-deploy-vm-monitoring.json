@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "AzOps"
+    }
+  },
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "Deploy-VM-Monitoring",
+      "apiVersion": "2022-06-01",
+      "location": "centralus",
+      "identity": {
+        "PrincipalId": "8a8ccd50-76d8-4e36-a02e-11ac135bcbb4",
+        "TenantId": "b4d92c44-4053-444e-9eda-f79a78ea305c",
+        "Type": "SystemAssigned"
+      },
+      "properties": {
+        "Description": "Enable Azure Monitor for the virtual machines (VMs) in the specified scope (management group, subscription or resource group). Takes Log Analytics workspace as parameter.",
+        "DisplayName": "Enable Azure Monitor for VMs",
+        "EnforcementMode": "Default",
+        "NonComplianceMessages": [],
+        "NotScopes": [],
+        "Parameters": {
+          "logAnalytics_1": {
+            "value": "/subscriptions/45745095-da5c-4dae-969e-dcd1aa0a41ab/resourceGroups/eslz-mgmt/providers/Microsoft.OperationalInsights/workspaces/eslz-law"
+          }
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/55f3eceb-5573-4f18-9695-226972c6d74a",
+        "Scope": "/providers/Microsoft.Management/managementGroups/eslz"
+      }
+    }
+  ],
+  "outputs": {}
+}
