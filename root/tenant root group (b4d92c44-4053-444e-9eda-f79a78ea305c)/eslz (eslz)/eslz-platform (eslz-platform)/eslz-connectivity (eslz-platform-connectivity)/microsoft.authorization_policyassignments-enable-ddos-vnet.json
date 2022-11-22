@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "AzOps"
+    }
+  },
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "Enable-DDoS-VNET",
+      "apiVersion": "2022-06-01",
+      "location": "centralus",
+      "identity": {
+        "PrincipalId": "48eaad4f-3d7b-4f28-a54f-526cad574c2a",
+        "TenantId": "b4d92c44-4053-444e-9eda-f79a78ea305c",
+        "Type": "SystemAssigned"
+      },
+      "properties": {
+        "Description": "Protect your virtual networks against volumetric and protocol attacks with Azure DDoS Protection Standard. For more information, visit https://aka.ms/ddosprotectiondocs.",
+        "DisplayName": "Virtual networks should be protected by Azure DDoS Protection Standard",
+        "EnforcementMode": "Default",
+        "NonComplianceMessages": [],
+        "NotScopes": [],
+        "Parameters": {
+          "ddosPlan": {
+            "value": "/subscriptions/7800e74e-f5cf-43e9-a09a-ea1bf7d30e0f/resourceGroups/eslz_Hub_Networking/providers/Microsoft.Network/ddosProtectionPlans/eslz-ddos-plan"
+          },
+          "effect": {
+            "value": "Modify"
+          }
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d",
+        "Scope": "/providers/Microsoft.Management/managementGroups/eslz-platform-connectivity"
+      }
+    }
+  ],
+  "outputs": {}
+}
